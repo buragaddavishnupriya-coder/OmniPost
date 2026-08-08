@@ -31,9 +31,14 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build
-        env:
-          VITE_API_BASE: ${{ vars.VITE_API_BASE }}
+        run: |
+          # Fallback to secrets if vars is empty
+          if [ -n "${{ vars.VITE_API_BASE }}" ]; then
+            export VITE_API_BASE="${{ vars.VITE_API_BASE }}"
+          else
+            export VITE_API_BASE="${{ secrets.VITE_API_BASE }}"
+          fi
+          npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
