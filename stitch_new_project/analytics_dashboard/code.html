@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OmniPost Analytics | Aura Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-dim": "#53506b",
+                        "surface-tint": "#005ac2",
+                        "on-primary-fixed-variant": "#0057bd",
+                        "secondary-dim": "#515359",
+                        "secondary": "#5e5f65",
+                        "inverse-surface": "#0c0f10",
+                        "on-error": "#fff7f6",
+                        "surface-container-high": "#e2e9ec",
+                        "on-secondary": "#f9f8ff",
+                        "secondary-fixed": "#e2e2e9",
+                        "outline-variant": "#abb3b7",
+                        "outline": "#737c7f",
+                        "surface-variant": "#dbe4e7",
+                        "on-primary": "#f7f7ff",
+                        "on-tertiary": "#fcf7ff",
+                        "on-surface": "#2b3437",
+                        "tertiary-fixed": "#d3ceef",
+                        "surface-container-highest": "#dbe4e7",
+                        "on-background": "#2b3437",
+                        "primary-dim": "#004fab",
+                        "tertiary-fixed-dim": "#c5c0e0",
+                        "surface-container": "#eaeff1",
+                        "primary-container": "#d8e2ff",
+                        "error-dim": "#4e0309",
+                        "primary-fixed-dim": "#c3d4ff",
+                        "on-secondary-fixed": "#3e3f45",
+                        "inverse-primary": "#4d8eff",
+                        "background": "#f8f9fa",
+                        "surface-dim": "#d1dce0",
+                        "on-secondary-fixed-variant": "#5a5b61",
+                        "tertiary-container": "#d3ceef",
+                        "on-tertiary-container": "#47445f",
+                        "secondary-fixed-dim": "#d4d4db",
+                        "surface-bright": "#f8f9fa",
+                        "on-error-container": "#752121",
+                        "on-tertiary-fixed-variant": "#504e69",
+                        "on-secondary-container": "#505157",
+                        "primary-fixed": "#d8e2ff",
+                        "error-container": "#fe8983",
+                        "tertiary": "#5f5c78",
+                        "surface": "#f8f9fa",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#34314b",
+                        "on-surface-variant": "#586064",
+                        "on-primary-container": "#004eaa",
+                        "inverse-on-surface": "#9b9d9e",
+                        "on-primary-fixed": "#003c86",
+                        "secondary-container": "#e2e2e9",
+                        "primary": "#005ac2",
+                        "error": "#9f403d",
+                        "surface-container-low": "#f1f4f6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .chart-grid {
+            background-image: linear-gradient(to right, #eaeff1 1px, transparent 1px), linear-gradient(to bottom, #eaeff1 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl shadow-sm shadow-slate-200/50 flex items-center justify-between px-6 h-16 font-sans antialiased text-sm tracking-tight">
+<div class="flex items-center gap-8">
+<span class="text-lg font-bold tracking-tighter text-slate-900">Aura Analytics</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-blue-600 font-semibold border-b-2 border-blue-600 py-5" href="#">Dashboard</a>
+<a class="text-slate-500 hover:text-slate-900 transition-colors duration-200 py-5" href="#">Reports</a>
+<a class="text-slate-500 hover:text-slate-900 transition-colors duration-200 py-5" href="#">Audience</a>
+<a class="text-slate-500 hover:text-slate-900 transition-colors duration-200 py-5" href="#">Strategy</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-50 transition-colors rounded-lg active:scale-95">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-50 transition-colors rounded-lg active:scale-95">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden ml-2 border border-outline-variant/20">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="professional headshot of a young entrepreneur in a light grey blazer against a soft studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYbSc1u5NX90Ri_mYFBZxGubzbP-TstqjyuGEem5mv5MRkwntz5QIH1HsqpKIv750e9Ksy0Cyry7-EqC7bR-judq4rnHN_0Rpr5_WDUSDJSq_5Li9E4DyR02oFThchT1bvSIF3UcxEtvyGtNShlH3NsXPidMyfiowrz4ESVMTHq7wPz8PsuA6zyf4o7buYqeQV5loVeaQlpldtkrwbXDsZiuucRvqLm0FkEq-nJY3CbLia8n1OcEmjzQ88msNMcbYAtqzxa4KeOXBw"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 pt-20 bg-slate-50 border-r border-slate-200/50 flex flex-col p-4 gap-y-6 hidden lg:flex">
+<div>
+<p class="text-xs font-medium uppercase tracking-widest text-slate-400 px-4 mb-4">Workspace</p>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 text-blue-600 relative py-2 px-4 before:content-[''] before:absolute before:left-0 before:w-1 before:h-6 before:bg-blue-600 before:rounded-r-full hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Overview</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 hover:text-slate-900 py-2 px-4 hover:translate-x-1 duration-300 transition-all" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="text-sm font-medium">Social Feed</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 hover:text-slate-900 py-2 px-4 hover:translate-x-1 duration-300 transition-all" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="text-sm font-medium">AI Insights</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 hover:text-slate-900 py-2 px-4 hover:translate-x-1 duration-300 transition-all" href="#">
+<span class="material-symbols-outlined">campaign</span>
+<span class="text-sm font-medium">Campaigns</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 hover:text-slate-900 py-2 px-4 hover:translate-x-1 duration-300 transition-all" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">Team</span>
+</a>
+</div>
+</div>
+<div class="mt-auto border-t border-slate-200/50 pt-4">
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 text-slate-500 hover:text-slate-900 py-2 px-4 hover:translate-x-1 duration-300 transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="text-sm font-medium">Help</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 hover:text-slate-900 py-2 px-4 hover:translate-x-1 duration-300 transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-sm font-medium">Logout</span>
+</a>
+</div>
+<div class="mt-6 px-4">
+<div class="p-4 bg-primary-container/30 rounded-xl">
+<p class="text-[10px] font-bold text-primary tracking-widest uppercase mb-1">Enterprise Plan</p>
+<button class="w-full bg-gradient-to-r from-primary to-primary-dim text-on-primary text-xs font-semibold py-2 rounded-lg shadow-sm">New Analysis</button>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="lg:ml-64 pt-16 min-h-screen">
+<div class="max-w-7xl mx-auto px-8 py-10">
+<!-- Header & Filters -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div>
+<h1 class="text-[3.5rem] font-extrabold tracking-tighter text-on-surface leading-none mb-2">Analytics Overview</h1>
+<p class="text-on-surface-variant font-medium">Performance summary for OmniPost ecosystem.</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="group relative">
+<button class="flex items-center gap-2 px-4 py-2.5 bg-surface-container-lowest rounded-lg text-sm font-medium border border-outline-variant/10 shadow-sm transition-all hover:bg-white active:scale-95">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+                            Last 30 Days
+                            <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+</div>
+<div class="group relative">
+<button class="flex items-center gap-2 px-4 py-2.5 bg-surface-container-lowest rounded-lg text-sm font-medium border border-outline-variant/10 shadow-sm transition-all hover:bg-white active:scale-95">
+<span class="material-symbols-outlined text-sm">public</span>
+                            All Platforms
+                            <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+<!-- KPI Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/10 shadow-[0_12px_40px_-12px_rgba(43,52,55,0.04)] transition-all hover:shadow-[0_12px_40px_-12px_rgba(43,52,55,0.08)]">
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-3">Engagement Rate</p>
+<div class="flex items-end justify-between">
+<span class="text-4xl font-bold tracking-tighter text-on-surface">4.82%</span>
+<div class="flex items-center text-primary text-sm font-bold bg-primary-container/40 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-sm">arrow_upward</span>
+                            12%
+                        </div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/10 shadow-[0_12px_40px_-12px_rgba(43,52,55,0.04)] transition-all hover:shadow-[0_12px_40px_-12px_rgba(43,52,55,0.08)]">
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-3">Total Reach</p>
+<div class="flex items-end justify-between">
+<span class="text-4xl font-bold tracking-tighter text-on-surface">1.2M</span>
+<div class="flex items-center text-primary text-sm font-bold bg-primary-container/40 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-sm">arrow_upward</span>
+                            8.4%
+                        </div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/10 shadow-[0_12px_40px_-12px_rgba(43,52,55,0.04)] transition-all hover:shadow-[0_12px_40px_-12px_rgba(43,52,55,0.08)]">
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-3">Click-Through Rate</p>
+<div class="flex items-end justify-between">
+<span class="text-4xl font-bold tracking-tighter text-on-surface">2.14%</span>
+<div class="flex items-center text-error text-sm font-bold bg-error-container/20 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-sm">arrow_downward</span>
+                            0.5%
+                        </div>
+</div>
+</div>
+</div>
+<!-- Main Charts Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+<!-- Engagement Over Time (Bento Large) -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/10">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="text-lg font-bold tracking-tight text-on-surface">Engagement Over Time</h3>
+<p class="text-xs text-on-surface-variant">Daily interactions across all connected profiles</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="text-xs font-medium text-on-surface-variant">Current</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-surface-container-highest"></span>
+<span class="text-xs font-medium text-on-surface-variant">Previous</span>
+</div>
+</div>
+</div>
+<div class="h-64 w-full relative overflow-hidden rounded-lg">
+<div class="absolute inset-0 chart-grid opacity-30"></div>
+<svg class="absolute inset-0 h-full w-full" preserveaspectratio="none">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#005ac2" stop-opacity="0.1"></stop>
+<stop offset="100%" stop-color="#005ac2" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Previous Period Area (Faded) -->
+<path d="M0,180 Q80,170 160,190 T320,160 T480,200 T640,170 T800,210 L800,256 L0,256 Z" fill="#eaeff1" fill-opacity="0.5"></path>
+<!-- Main Data Line -->
+<path d="M0,150 Q80,120 160,140 T320,100 T480,120 T640,80 T800,100" fill="none" stroke="#005ac2" stroke-linecap="round" stroke-width="3"></path>
+<path d="M0,150 Q80,120 160,140 T320,100 T480,120 T640,80 T800,100 L800,256 L0,256 Z" fill="url(#chartGradient)"></path>
+<!-- Hover Marker -->
+<circle cx="320" cy="100" fill="#005ac2" r="6" stroke="white" stroke-width="2"></circle>
+</svg>
+<div class="absolute bottom-0 left-0 right-0 flex justify-between px-2 pb-2 text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">
+<span>01 Oct</span>
+<span>07 Oct</span>
+<span>14 Oct</span>
+<span>21 Oct</span>
+<span>30 Oct</span>
+</div>
+</div>
+</div>
+<!-- Post Performance Bar Chart -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/10">
+<h3 class="text-lg font-bold tracking-tight text-on-surface mb-1">Content Strategy</h3>
+<p class="text-xs text-on-surface-variant mb-8">Performance by format type</p>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">
+<span>Video / Reels</span>
+<span class="text-on-surface">82%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 82%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">
+<span>Carousel</span>
+<span class="text-on-surface">65%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary/70 rounded-full" style="width: 65%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">
+<span>Static Images</span>
+<span class="text-on-surface">41%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary/40 rounded-full" style="width: 41%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">
+<span>Stories</span>
+<span class="text-on-surface">94%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 94%"></div>
+</div>
+</div>
+</div>
+<div class="mt-10 p-4 rounded-xl bg-surface-container-low">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<div>
+<p class="text-xs font-bold text-on-surface">AI Recommendation</p>
+<p class="text-[11px] text-on-surface-variant leading-tight">Increase Video content by 15% to boost weekend engagement.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Top Performing Posts -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/10 overflow-hidden shadow-[0_12px_40px_-12px_rgba(43,52,55,0.04)]">
+<div class="px-8 py-6 border-b border-surface-container flex items-center justify-between">
+<h3 class="text-lg font-bold tracking-tight text-on-surface">Top Performing Posts</h3>
+<button class="text-xs font-bold text-primary hover:underline">View All Posts</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">
+<th class="px-8 py-4">Post Content</th>
+<th class="px-8 py-4">Platform</th>
+<th class="px-8 py-4">Reach</th>
+<th class="px-8 py-4">Engagement</th>
+<th class="px-8 py-4">CTR</th>
+</tr>
+</thead>
+<tbody class="text-sm divide-y divide-surface-container">
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="px-8 py-5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container">
+<img alt="Post thumbnail" class="w-full h-full object-cover" data-alt="colorful abstract social media graphic with bold typography and geometric shapes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDX77TeJv3JJuyijELyY5fP0APMoW9ID0WJHyh7mxKZFaCE_SzVgjsd1M8qK7UWq3BcfKdmtqIpD2zOZdu9ju2DIQ8JIPpTOJyz_vcBoxKP_QjPqOaqDo7IAFE-ohVmPq8ZwqicxnKsFdNiqA_Q-KsQ91cR1c1tWKZToQk11cvsydHi7akPgUJiOXLs8UaRgLMtdETZU7gk4_dybJsuMnL_pBuPK0gxVlC98h_240m0IQl45EfZp-e_gc63RtHUPGEDf3Rb1AZMKQy-"/>
+</div>
+<div>
+<p class="font-semibold text-on-surface line-clamp-1">Launch of our Q4 Roadmap</p>
+<p class="text-xs text-on-surface-variant">Posted 2 days ago</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 text-[11px] font-bold text-slate-600">
+<span class="material-symbols-outlined text-xs">camera_alt</span>
+                                        Instagram
+                                    </span>
+</td>
+<td class="px-8 py-5 font-medium">42.5k</td>
+<td class="px-8 py-5 font-medium">8.2%</td>
+<td class="px-8 py-5 font-medium">3.1%</td>
+</tr>
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="px-8 py-5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container">
+<img alt="Post thumbnail" class="w-full h-full object-cover" data-alt="blurred office background with focus on a modern smartphone screen displaying data charts" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKliqbLrHJ0jozkEFlTm8Eu4Ztcnrppzk8IhHzwHgImK4QAeRU51wZbNYsPWZSL08YOsEA-imLMbBXYBRCSCLGTspr3R1qoRYTnoJkl3Ewu46-E5gdaGQAiYyHokPgDSx2OA_lbTTT3oMOr1_8HBm7C7k3KI02rFr11CKpOADwkrVZnQsUZPp0tJFYkx_BFHNkCwLzJxD6pEFGPhsaAN4Kcd_jx5Y1te3yQ4c48qSg-PB1VMyI3FVWXd8zjcSnt3DdxxdBhW1AuldW"/>
+</div>
+<div>
+<p class="font-semibold text-on-surface line-clamp-1">The future of SaaS analytics</p>
+<p class="text-xs text-on-surface-variant">Posted 4 days ago</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-100 text-[11px] font-bold text-blue-700">
+<span class="material-symbols-outlined text-xs">work</span>
+                                        LinkedIn
+                                    </span>
+</td>
+<td class="px-8 py-5 font-medium">18.9k</td>
+<td class="px-8 py-5 font-medium">12.4%</td>
+<td class="px-8 py-5 font-medium">5.8%</td>
+</tr>
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="px-8 py-5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container">
+<img alt="Post thumbnail" class="w-full h-full object-cover" data-alt="vibrant neon lighting on a dark background showing a stylized tech logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgORkpF12EwI2-QfPLHgpwyqqVWOsG-x3g1eeOXoBxVMSbHkSDVIQ6lxMmxklv1MNTwcl7L6x62kQ7uY0gODBz-TKIlMkatW4exTt8svuJ3xoKZi9qWQuSowQQ4f8hwMMN0mxT7zBZ7lq3WK4YPlM3mR6wWZ3zVLIbiXKdpyibR7dyn4ON_7Wb4Yvse_rypLrwUDhqbEXMgTHMAwuEaJXFE3gClO5irbf11iL5ZUoTxZaFYGmhrV93ZapurAizyaSRyO-eASLwjXu4"/>
+</div>
+<div>
+<p class="font-semibold text-on-surface line-clamp-1">How we scaled our team...</p>
+<p class="text-xs text-on-surface-variant">Posted 1 week ago</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-900 text-[11px] font-bold text-white">
+<span class="material-symbols-outlined text-xs">close</span>
+                                        X (Twitter)
+                                    </span>
+</td>
+<td class="px-8 py-5 font-medium">94.2k</td>
+<td class="px-8 py-5 font-medium">4.1%</td>
+<td class="px-8 py-5 font-medium">1.2%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</body></html>

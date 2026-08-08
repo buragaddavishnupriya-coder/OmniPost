@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AgentFlow - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#fe8983",
+                    "on-secondary": "#f9f8ff",
+                    "background": "#f8f9fa",
+                    "tertiary-dim": "#53506b",
+                    "on-primary": "#f7f7ff",
+                    "inverse-primary": "#4d8eff",
+                    "error": "#9f403d",
+                    "tertiary-fixed": "#d3ceef",
+                    "secondary-dim": "#515359",
+                    "error-dim": "#4e0309",
+                    "on-primary-container": "#004eaa",
+                    "tertiary-fixed-dim": "#c5c0e0",
+                    "surface-container": "#eaeff1",
+                    "on-secondary-container": "#505157",
+                    "on-secondary-fixed": "#3e3f45",
+                    "primary-fixed": "#d8e2ff",
+                    "primary-container": "#d8e2ff",
+                    "on-surface": "#2b3437",
+                    "on-tertiary-fixed": "#34314b",
+                    "primary-fixed-dim": "#c3d4ff",
+                    "secondary": "#5e5f65",
+                    "on-primary-fixed": "#003c86",
+                    "surface-dim": "#d1dce0",
+                    "on-tertiary": "#fcf7ff",
+                    "on-background": "#2b3437",
+                    "surface": "#f8f9fa",
+                    "secondary-fixed-dim": "#d4d4db",
+                    "on-error": "#fff7f6",
+                    "surface-container-highest": "#dbe4e7",
+                    "on-surface-variant": "#586064",
+                    "inverse-on-surface": "#9b9d9e",
+                    "primary-dim": "#004fab",
+                    "on-error-container": "#752121",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#5a5b61",
+                    "on-primary-fixed-variant": "#0057bd",
+                    "surface-bright": "#f8f9fa",
+                    "secondary-fixed": "#e2e2e9",
+                    "surface-tint": "#005ac2",
+                    "on-tertiary-fixed-variant": "#504e69",
+                    "inverse-surface": "#0c0f10",
+                    "surface-container-low": "#f1f4f6",
+                    "tertiary-container": "#d3ceef",
+                    "tertiary": "#5f5c78",
+                    "outline-variant": "#abb3b7",
+                    "secondary-container": "#e2e2e9",
+                    "surface-variant": "#dbe4e7",
+                    "outline": "#737c7f",
+                    "surface-container-high": "#e2e9ec",
+                    "primary": "#005ac2",
+                    "on-tertiary-container": "#47445f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.5rem",
+                    "lg": "0.5rem",
+                    "xl": "1rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopNavBar -->
+<nav class="w-full top-0 sticky z-50 bg-white border-b border-outline-variant/10">
+<div class="flex justify-between items-center h-16 px-6 max-w-full mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tight text-slate-900">AgentFlow</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-blue-600 border-b-2 border-blue-600 pb-1 font-medium text-sm tracking-wide" href="#">Dashboard</a>
+<a class="text-slate-500 hover:text-slate-900 transition-colors duration-200 font-medium text-sm tracking-wide" href="#">Workflows</a>
+<a class="text-slate-500 hover:text-slate-900 transition-colors duration-200 font-medium text-sm tracking-wide" href="#">Logs</a>
+<a class="text-slate-500 hover:text-slate-900 transition-colors duration-200 font-medium text-sm tracking-wide" href="#">Analytics</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center bg-surface-container-low rounded-lg px-3 py-1.5 gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48 text-on-surface" placeholder="Search agents..." type="text"/>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-gradient-to-br from-primary to-primary-dim text-on-primary rounded-lg text-sm font-semibold shadow-sm hover:scale-[0.98] transition-all">
+                    Create Agent
+                </button>
+<div class="flex items-center gap-1 border-l border-outline-variant/20 ml-2 pl-3">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-surface-container-highest overflow-hidden ml-2 ring-2 ring-white">
+<img alt="User profile" data-alt="Close up portrait of a smiling professional man with short dark hair in a bright office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCf6tUKXssjRbefvKhcbYWD7mOdp9g5BLKDjmFrlpBpeGKw-JRUzIY18lsk9sg9pXVeRft-X_h4k--J-B-7wfOkhUzvcN-kge9aNQlzKreFtTJRq_CSeehGcosnUaVUEJOxkkF0dnHXLBBwV5ZDCxt4B5VBCUaXWJEYFpRSIFCQeeohxQQrYl_vV25tuljp8PHclAFgBOjMrKf5Zg9_XMVekZcZwn0htke0VEtUd7uoLzFMQ1BkcvXOEHuwSdP_Gqry1CXvRWJ6KquN"/>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<div class="flex">
+<!-- SideNavBar -->
+<aside class="h-[calc(100vh-4rem)] w-64 sticky left-0 top-16 bg-surface-container-low border-r border-outline-variant/10 hidden lg:flex flex-col py-6">
+<div class="px-6 mb-8">
+<h3 class="text-lg font-bold text-slate-900">Workspace</h3>
+<p class="text-xs text-on-surface-variant font-medium">AI Automation Pro</p>
+</div>
+<nav class="flex-1 px-3 space-y-1">
+<a class="flex items-center gap-3 text-blue-600 font-semibold border-l-4 border-blue-600 pl-4 py-3 translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-sm font-medium">Overview</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 pl-5 py-3 hover:bg-surface-container-high rounded-r-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="text-sm font-medium">Agents</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 pl-5 py-3 hover:bg-surface-container-high rounded-r-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+<span class="text-sm font-medium">Integrations</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 pl-5 py-3 hover:bg-surface-container-high rounded-r-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="bar_chart">bar_chart</span>
+<span class="text-sm font-medium">Usage</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 pl-5 py-3 hover:bg-surface-container-high rounded-r-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-sm font-medium">Team</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<div class="p-4 bg-primary-container/30 rounded-xl">
+<p class="text-xs font-bold text-on-primary-container uppercase tracking-widest mb-2">Pro Plan</p>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-4">Unlock advanced workflow orchestration.</p>
+<button class="w-full py-2 bg-white text-primary text-sm font-semibold rounded-lg shadow-sm border border-primary/10">Upgrade Plan</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 p-8 min-h-screen bg-surface">
+<header class="mb-12">
+<h1 class="text-4xl font-extrabold tracking-tight text-on-surface mb-2">My Agents</h1>
+<p class="text-on-surface-variant max-w-2xl">Orchestrate your fleet of specialized AI assistants. Monitor status, optimize performance, and scale your automated workflows.</p>
+</header>
+<!-- Agent Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Agent Card 1: Growth Bot -->
+<div class="bg-surface-container-lowest rounded-xl p-6 transition-all hover:translate-y-[-4px] hover:shadow-[0_12px_40px_-12px_rgba(43,52,55,0.08)]">
+<div class="flex justify-between items-start mb-6">
+<div class="h-12 w-12 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="mb-6">
+<h3 class="text-lg font-bold text-on-surface mb-1">Growth Bot</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Analyzes market trends and optimizes ad spend across social platforms in real-time.</p>
+</div>
+<div class="flex items-center justify-between pt-6 border-t border-outline-variant/10">
+<span class="flex items-center gap-1.5 text-xs font-semibold text-primary">
+<span class="h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+                            ACTIVE
+                        </span>
+<div class="flex -space-x-2">
+<span class="material-symbols-outlined text-on-surface-variant/40 text-lg">memory</span>
+<span class="material-symbols-outlined text-on-surface-variant/40 text-lg">webhook</span>
+</div>
+</div>
+</div>
+<!-- Agent Card 2: Support Specialist -->
+<div class="bg-surface-container-lowest rounded-xl p-6 transition-all hover:translate-y-[-4px] hover:shadow-[0_12px_40px_-12px_rgba(43,52,55,0.08)]">
+<div class="flex justify-between items-start mb-6">
+<div class="h-12 w-12 rounded-xl bg-indigo-100 flex items-center justify-center text-indigo-600">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">support_agent</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="mb-6">
+<h3 class="text-lg font-bold text-on-surface mb-1">Support Specialist</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Handles Level-1 customer inquiries and schedules complex issues for human review.</p>
+</div>
+<div class="flex items-center justify-between pt-6 border-t border-outline-variant/10">
+<span class="flex items-center gap-1.5 text-xs font-semibold text-primary">
+<span class="h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+                            ACTIVE
+                        </span>
+<div class="flex -space-x-2">
+<span class="material-symbols-outlined text-on-surface-variant/40 text-lg">forum</span>
+</div>
+</div>
+</div>
+<!-- Agent Card 3: Data Miner (Paused) -->
+<div class="bg-surface-container-low/50 border border-outline-variant/20 rounded-xl p-6 transition-all grayscale opacity-70">
+<div class="flex justify-between items-start mb-6">
+<div class="h-12 w-12 rounded-xl bg-slate-200 flex items-center justify-center text-slate-600">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">database</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="mb-6">
+<h3 class="text-lg font-bold text-on-surface mb-1">Data Miner</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Extracts structured data from unstructured documentation and synchronizes with CRM.</p>
+</div>
+<div class="flex items-center justify-between pt-6 border-t border-outline-variant/10">
+<span class="flex items-center gap-1.5 text-xs font-semibold text-on-surface-variant">
+<span class="h-2 w-2 rounded-full bg-on-surface-variant"></span>
+                            PAUSED
+                        </span>
+</div>
+</div>
+<!-- Agent Card 4: Quality Sentry -->
+<div class="bg-surface-container-lowest rounded-xl p-6 transition-all hover:translate-y-[-4px] hover:shadow-[0_12px_40px_-12px_rgba(43,52,55,0.08)]">
+<div class="flex justify-between items-start mb-6">
+<div class="h-12 w-12 rounded-xl bg-teal-100 flex items-center justify-center text-teal-600">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="mb-6">
+<h3 class="text-lg font-bold text-on-surface mb-1">Quality Sentry</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Monitors code commits for security vulnerabilities and architectural inconsistencies.</p>
+</div>
+<div class="flex items-center justify-between pt-6 border-t border-outline-variant/10">
+<span class="flex items-center gap-1.5 text-xs font-semibold text-primary">
+<span class="h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+                            ACTIVE
+                        </span>
+<div class="flex -space-x-2">
+<span class="material-symbols-outlined text-on-surface-variant/40 text-lg">code</span>
+</div>
+</div>
+</div>
+<!-- Featured Agent Card (Asymmetric) -->
+<div class="xl:col-span-2 bg-gradient-to-br from-primary/5 to-transparent border border-primary/10 rounded-xl p-8 flex flex-col md:flex-row gap-8 items-center">
+<div class="flex-1">
+<span class="inline-block px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold tracking-widest rounded-full mb-4">RECOMMENDED</span>
+<h3 class="text-2xl font-bold text-on-surface mb-3">Enterprise Concierge</h3>
+<p class="text-on-surface-variant mb-6 leading-relaxed">A high-performance LLM agent trained on your internal documentation to provide instant answers to employee queries via Slack and Teams.</p>
+<div class="flex gap-3">
+<button class="px-5 py-2.5 bg-primary text-white text-sm font-semibold rounded-lg">Deploy Template</button>
+<button class="px-5 py-2.5 text-on-surface text-sm font-semibold rounded-lg hover:bg-surface-container-low transition-colors">Preview Docs</button>
+</div>
+</div>
+<div class="w-full md:w-64 h-40 bg-surface-container-highest rounded-lg overflow-hidden relative shadow-inner">
+<img class="w-full h-full object-cover mix-blend-overlay opacity-80" data-alt="Abstract futuristic AI visualization with glowing blue neural network lines and geometric shapes on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvVxivk-TgV73hrOipIIBEdqdSpmiAMZOPYhpsw7vPzFUhGvUWSlr5Gx2xiLSMp624XJdW44CMsVsg0WmC-_ja_CDsaPHu_qKa8pypWb2lxWLSNNcSlVnD74QbyRYJMPRMAqxd__O62wVxTGO_gY6ZjKWpvBMUVIe3tZfw1xVrMWsPZS2x1DvTZJj2N91KORy7VPvtwZPK55JdV1cSCfb23fmTYFQ2UMksnitHlH4S30C1DoUe-QPiC5wRZFJmDk9kFOQkMGpFO5nU"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-primary-dim">auto_awesome</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Stats Bar (Editorial style) -->
+<section class="mt-16 pt-12 border-t border-outline-variant/10">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Total Executions</p>
+<p class="text-3xl font-extrabold text-on-surface">1.2M</p>
+</div>
+<div>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Success Rate</p>
+<p class="text-3xl font-extrabold text-on-surface">99.8%</p>
+</div>
+<div>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Active Agents</p>
+<p class="text-3xl font-extrabold text-on-surface">14</p>
+</div>
+<div>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Avg Latency</p>
+<p class="text-3xl font-extrabold text-on-surface">240ms</p>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Mobile Nav Overlay (Hidden on web) -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 glass-panel border-t border-outline-variant/10 px-6 py-3 flex justify-between items-center z-50">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="text-[10px] font-bold">DASHBOARD</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="text-[10px] font-bold">WORKFLOWS</span>
+</button>
+<button class="bg-primary text-white p-3 rounded-full -mt-10 shadow-lg border-4 border-white">
+<span class="material-symbols-outlined">add</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">insights</span>
+<span class="text-[10px] font-bold">LOGS</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold">PROFILE</span>
+</button>
+</div>
+</body></html>

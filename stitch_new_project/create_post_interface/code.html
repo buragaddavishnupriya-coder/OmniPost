@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Post | Digital Curator</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#4d8eff",
+                        "error": "#9f403d",
+                        "secondary-container": "#e2e2e9",
+                        "on-surface-variant": "#586064",
+                        "on-primary-container": "#004eaa",
+                        "surface-dim": "#d1dce0",
+                        "surface-tint": "#005ac2",
+                        "on-error": "#fff7f6",
+                        "outline": "#737c7f",
+                        "primary-dim": "#004fab",
+                        "on-secondary": "#f9f8ff",
+                        "primary-fixed-dim": "#c3d4ff",
+                        "secondary-fixed": "#e2e2e9",
+                        "surface-container-high": "#e2e9ec",
+                        "on-tertiary-fixed": "#34314b",
+                        "surface-container-low": "#f1f4f6",
+                        "error-dim": "#4e0309",
+                        "tertiary-dim": "#53506b",
+                        "on-background": "#2b3437",
+                        "primary-container": "#d8e2ff",
+                        "on-error-container": "#752121",
+                        "primary-fixed": "#d8e2ff",
+                        "tertiary-fixed": "#d3ceef",
+                        "surface-bright": "#f8f9fa",
+                        "tertiary": "#5f5c78",
+                        "surface-variant": "#dbe4e7",
+                        "secondary": "#5e5f65",
+                        "on-primary-fixed-variant": "#0057bd",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#5a5b61",
+                        "on-surface": "#2b3437",
+                        "on-primary-fixed": "#003c86",
+                        "tertiary-fixed-dim": "#c5c0e0",
+                        "surface-container-highest": "#dbe4e7",
+                        "error-container": "#fe8983",
+                        "on-primary": "#f7f7ff",
+                        "primary": "#005ac2",
+                        "on-secondary-fixed": "#3e3f45",
+                        "on-secondary-container": "#505157",
+                        "on-tertiary-fixed-variant": "#504e69",
+                        "tertiary-container": "#d3ceef",
+                        "secondary-fixed-dim": "#d4d4db",
+                        "outline-variant": "#abb3b7",
+                        "on-tertiary": "#fcf7ff",
+                        "secondary-dim": "#515359",
+                        "background": "#f8f9fa",
+                        "inverse-surface": "#0c0f10",
+                        "on-tertiary-container": "#47445f",
+                        "inverse-on-surface": "#9b9d9e",
+                        "surface-container": "#eaeff1",
+                        "surface": "#f8f9fa"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.5rem",
+                        "xl": "1rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col">
+<!-- TopAppBar from JSON -->
+<header class="flex justify-between items-center w-full px-6 h-16 fixed top-0 z-50 bg-white dark:bg-slate-900">
+<div class="flex items-center gap-4">
+<span class="text-lg font-bold text-slate-800 dark:text-slate-100 tracking-tight">Create Post</span>
+<div class="h-4 w-px bg-outline-variant opacity-20"></div>
+<nav class="hidden md:flex gap-6">
+<a class="font-sans antialiased text-sm text-blue-700 dark:text-blue-400 border-b-2 border-blue-700 pb-1" href="#">Editor</a>
+<a class="font-sans antialiased text-sm text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors" href="#">Analytics</a>
+</nav>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors">Schedule</button>
+<button class="bg-primary hover:bg-primary-dim text-on-primary px-6 py-2 rounded-lg text-sm font-semibold transition-all shadow-sm">Publish</button>
+</div>
+</header>
+<!-- SideNavBar from JSON -->
+<aside class="fixed left-0 top-16 bottom-0 flex flex-col p-4 w-64 bg-slate-50 dark:bg-slate-950 hidden md:flex">
+<div class="mb-8 px-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of a professional male editor in a bright studio setting with soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7T422IbHZCG2Fb4Anoz5k2s5rG2lAGnh17V3n75woQU5n7UWEJq5ymzvoXpHpA6MrWABx1pHPjcQxafcIq1IwkEGpN3zyzCjEnyR_joFqbmv44AEXeHFv2i__tmFKaMxZZMcbgpt2Gs4yI26IK2ZDNQn8Rbmx0FADebexlfgi0G3iXI30tEvxxDKHCuDmLgKwDYmztQ71hCPjGJSUImrgmP2mEUSi_JKXegByi5BGis2PWlMuNUKItFNaV2HbJf3q_NB2bRLdo5wl"/>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Draft Post</p>
+<p class="text-xs text-on-surface-variant">Marketing Campaign</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-2">
+<!-- Content Tab (Active) -->
+<a class="flex items-center gap-3 text-blue-700 dark:text-blue-400 relative before:content-[''] before:absolute before:left-[-16px] before:w-1 before:h-6 before:bg-blue-700 before:rounded-r-full py-2 px-2 hover:bg-slate-100 dark:hover:bg-slate-900 rounded transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+<span class="font-sans text-sm font-medium">Content</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 dark:text-slate-400 py-2 px-2 hover:bg-slate-100 dark:hover:bg-slate-900 rounded transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="image">image</span>
+<span class="font-sans text-sm font-medium">Media</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 dark:text-slate-400 py-2 px-2 hover:bg-slate-100 dark:hover:bg-slate-900 rounded transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+<span class="font-sans text-sm font-medium">Platforms</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 dark:text-slate-400 py-2 px-2 hover:bg-slate-100 dark:hover:bg-slate-900 rounded transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-sans text-sm font-medium">Schedule</span>
+</a>
+</nav>
+<button class="mt-auto w-full py-2 px-4 rounded-lg bg-surface-container-high text-on-surface text-sm font-medium hover:bg-surface-container-highest transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+            Add Platform
+        </button>
+</aside>
+<!-- Main Content Stage -->
+<main class="md:ml-64 mt-16 p-6 md:p-10 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-10">
+<!-- Left Column: Editor & Configuration -->
+<div class="lg:col-span-7 space-y-10">
+<!-- Bento-style Content Section -->
+<section class="space-y-4">
+<div class="flex justify-between items-end">
+<label class="text-label-md font-bold text-on-surface tracking-wider uppercase text-[10px]">Composition</label>
+<span class="text-[10px] text-on-surface-variant font-medium">240 / 2200 characters</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_12px_40px_-12px_rgba(43,52,55,0.05)]">
+<textarea class="w-full min-h-[200px] border-none focus:ring-0 p-0 text-body-md text-on-surface placeholder:text-on-surface-variant/40 resize-none bg-transparent" placeholder="What's on your mind? Use #hashtags to increase reach..."></textarea>
+<div class="flex gap-2 mt-4 pt-4 border-t border-outline-variant/10">
+<button class="p-2 hover:bg-surface-container rounded-lg text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="mood">mood</span>
+</button>
+<button class="p-2 hover:bg-surface-container rounded-lg text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="alternate_email">alternate_email</span>
+</button>
+<button class="p-2 hover:bg-surface-container rounded-lg text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="tag">tag</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Media Upload Area -->
+<section class="space-y-4">
+<label class="text-label-md font-bold text-on-surface tracking-wider uppercase text-[10px]">Media Assets</label>
+<div class="grid grid-cols-3 gap-4">
+<div class="col-span-1 aspect-square rounded-xl border-2 border-dashed border-outline-variant/30 flex flex-col items-center justify-center gap-2 hover:border-primary/40 hover:bg-primary-container/10 transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="add_a_photo">add_a_photo</span>
+<span class="text-[10px] font-medium text-on-surface-variant">Add Media</span>
+</div>
+<div class="col-span-2 relative aspect-[2/1] rounded-xl overflow-hidden group">
+<img class="w-full h-full object-cover" data-alt="abstract 3D render of flowing silk waves in muted blue and cream colors with soft shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7eTc_wPZH6fHTrxXQbP7ZA7eEQzmj3w7gMEUixqTRwrY-tR-AAxcq2UGRZ0ERGz_LOJiE9DlHqrVRqo5nEM3W6PUVUi1X4S9-eh3u2yA4nCzyUFZ-wuNh0qkVhDgjpkbeKqBBy4X40P7bcnxm8XL2qzlULf12JdSJBOzJXzaepbr5eBYb98wtpwUGQ1Xou4k0Riw0qtpcRIJi8NfLnKcga9lLzoElTAN0W5qHS8gKI3y2jR65VGsvbjEVbKiGCWB5b90DAZHq1rks"/>
+<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
+<button class="w-8 h-8 rounded-full glass-panel flex items-center justify-center text-white"><span class="material-symbols-outlined text-sm" data-icon="edit">edit</span></button>
+<button class="w-8 h-8 rounded-full glass-panel flex items-center justify-center text-white"><span class="material-symbols-outlined text-sm" data-icon="delete">delete</span></button>
+</div>
+</div>
+</div>
+</section>
+<!-- Platform Selection -->
+<section class="space-y-4">
+<label class="text-label-md font-bold text-on-surface tracking-wider uppercase text-[10px]">Publishing To</label>
+<div class="flex flex-wrap gap-4">
+<!-- Instagram Active -->
+<button class="flex items-center gap-3 px-4 py-3 rounded-xl bg-surface-container-lowest border-2 border-primary/20 shadow-sm transition-all">
+<div class="w-6 h-6 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="camera" style="font-variation-settings: 'FILL' 1;">camera</span>
+</div>
+<span class="text-sm font-semibold text-on-surface">Instagram</span>
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+</button>
+<!-- X Inactive -->
+<button class="flex items-center gap-3 px-4 py-3 rounded-xl bg-surface-container-low hover:bg-surface-container-highest transition-all">
+<div class="w-6 h-6 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="close">close</span>
+</div>
+<span class="text-sm font-medium text-on-surface-variant">X (Twitter)</span>
+</button>
+<!-- LinkedIn Active -->
+<button class="flex items-center gap-3 px-4 py-3 rounded-xl bg-surface-container-lowest border-2 border-primary/20 shadow-sm transition-all">
+<div class="w-6 h-6 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="work" style="font-variation-settings: 'FILL' 1;">work</span>
+</div>
+<span class="text-sm font-semibold text-on-surface">LinkedIn</span>
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+</button>
+</div>
+</section>
+</div>
+<!-- Right Column: Live Preview -->
+<div class="lg:col-span-5">
+<div class="sticky top-24 space-y-6">
+<div class="flex items-center justify-between">
+<label class="text-label-md font-bold text-on-surface tracking-wider uppercase text-[10px]">Live Preview</label>
+<div class="flex bg-surface-container-low p-1 rounded-lg">
+<button class="px-3 py-1 text-[10px] font-bold bg-white rounded shadow-sm text-primary">Mobile</button>
+<button class="px-3 py-1 text-[10px] font-bold text-on-surface-variant">Desktop</button>
+</div>
+</div>
+<!-- Preview Card -->
+<div class="bg-white rounded-3xl overflow-hidden shadow-[0_20px_50px_-20px_rgba(43,52,55,0.1)] border border-outline-variant/10">
+<!-- Preview Platform Tabs -->
+<div class="flex border-b border-outline-variant/5">
+<button class="flex-1 py-3 text-xs font-bold border-b-2 border-primary text-primary">Instagram</button>
+<button class="flex-1 py-3 text-xs font-medium text-on-surface-variant hover:bg-surface-container-low">LinkedIn</button>
+<button class="flex-1 py-3 text-xs font-medium text-on-surface-variant hover:bg-surface-container-low">Facebook</button>
+</div>
+<!-- Instagram Mockup Content -->
+<div class="p-0">
+<div class="flex items-center gap-2 p-3">
+<div class="w-8 h-8 rounded-full bg-surface-container">
+<img class="w-full h-full object-cover rounded-full" data-alt="professional male profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCF0UknW-2UmQzvaL2AEKHPCdyeR-LjgzzyvZGiNv07fc-6goomj5iu-FdpssMbL1d9b_UUtu9g7gvMuSsLK_NvO5Vh3jQK7Aq7dn67Mt8RPK_ijH4kubi1L1sldHcxAi9rJPo2YmMP-FyczvooyYgKy6GX8r9mza-ake1bf9_Z61fSJiHDETgLbM3xY_eRzpCg6XXhAInll3HelIWPWnm31n1uwbkmtzObs9PlncCQBbRjmDWLYoSgNBbFP974lRUqYIulT-_ZiV5V"/>
+</div>
+<span class="text-xs font-bold">digital_curator_studio</span>
+</div>
+<div class="aspect-square bg-slate-100">
+<img class="w-full h-full object-cover" data-alt="abstract 3D digital art with smooth curves and professional studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbPPbcPphXnifrvJx9d5Y12r2m6DU9Ds1IxQnJVLsYYdnu8Hfl09iPsfVefYypd5hzTo9232ZX6e--hD66Z1vWT5Q3MOBP7XlJoJunLTXVnRPaOUvfVCMjmwPC9zPUSvBMkrgtSTW3hTb0SbA1uXblnl-2qz-TNygS8P8zlOlLPOf9FHBhuckKcFClRfLTZ1_39WVwP6q01kR8rIQgi4Msv5Vtwous9lv_MELypG6nA3NoY9rdZeonhx2wDF5O1D_AsBa1PdOal-go"/>
+</div>
+<div class="p-4 space-y-3">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-[24px]" data-icon="favorite">favorite</span>
+<span class="material-symbols-outlined text-[24px]" data-icon="chat_bubble">chat_bubble</span>
+<span class="material-symbols-outlined text-[24px]" data-icon="send">send</span>
+</div>
+<div class="text-xs leading-relaxed">
+<span class="font-bold mr-1">digital_curator_studio</span>
+                                Elevating the digital workspace. New project launch coming soon. Stay tuned for the future of editorial SaaS design. #DesignSystem #Minimalism
+                            </div>
+<div class="text-[10px] text-on-surface-variant/60 uppercase tracking-tighter">2 minutes ago</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5" data-icon="info">info</span>
+<p class="text-[11px] text-on-surface-variant leading-tight">Your post format is optimized for Instagram and LinkedIn. Image ratios are automatically adjusted.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Action Bar (Fixed on Mobile, Container-aligned on Desktop) -->
+<footer class="md:ml-64 bg-white/80 backdrop-blur-xl border-t border-outline-variant/5 p-4 md:px-10 flex justify-between items-center sticky bottom-0 z-40">
+<div class="hidden md:flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="text-xs font-medium text-on-surface-variant">Auto-saved 10:42 AM</span>
+</div>
+<button class="text-xs font-bold text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span>
+                Preview URL
+            </button>
+</div>
+<div class="flex items-center gap-4 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-6 py-2.5 rounded-lg border border-outline-variant/20 text-sm font-semibold text-on-surface hover:bg-surface-container transition-all">
+                Schedule
+            </button>
+<button class="flex-1 md:flex-none px-10 py-2.5 rounded-lg bg-primary text-on-primary text-sm font-bold shadow-[0_8px_20px_-6px_rgba(0,90,194,0.4)] hover:shadow-[0_12px_25px_-6px_rgba(0,90,194,0.5)] transition-all">
+                Publish Now
+            </button>
+</div>
+</footer>
+</body></html>

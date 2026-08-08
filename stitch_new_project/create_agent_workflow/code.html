@@ -1,0 +1,241 @@
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "error-container": "#fe8983",
+            "on-secondary": "#f9f8ff",
+            "background": "#f8f9fa",
+            "tertiary-dim": "#53506b",
+            "on-primary": "#f7f7ff",
+            "inverse-primary": "#4d8eff",
+            "error": "#9f403d",
+            "tertiary-fixed": "#d3ceef",
+            "secondary-dim": "#515359",
+            "error-dim": "#4e0309",
+            "on-primary-container": "#004eaa",
+            "tertiary-fixed-dim": "#c5c0e0",
+            "surface-container": "#eaeff1",
+            "on-secondary-container": "#505157",
+            "on-secondary-fixed": "#3e3f45",
+            "primary-fixed": "#d8e2ff",
+            "primary-container": "#d8e2ff",
+            "on-surface": "#2b3437",
+            "on-tertiary-fixed": "#34314b",
+            "primary-fixed-dim": "#c3d4ff",
+            "secondary": "#5e5f65",
+            "on-primary-fixed": "#003c86",
+            "surface-dim": "#d1dce0",
+            "on-tertiary": "#fcf7ff",
+            "on-background": "#2b3437",
+            "surface": "#f8f9fa",
+            "secondary-fixed-dim": "#d4d4db",
+            "on-error": "#fff7f6",
+            "surface-container-highest": "#dbe4e7",
+            "on-surface-variant": "#586064",
+            "inverse-on-surface": "#9b9d9e",
+            "primary-dim": "#004fab",
+            "on-error-container": "#752121",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-fixed-variant": "#5a5b61",
+            "on-primary-fixed-variant": "#0057bd",
+            "surface-bright": "#f8f9fa",
+            "secondary-fixed": "#e2e2e9",
+            "surface-tint": "#005ac2",
+            "on-tertiary-fixed-variant": "#504e69",
+            "inverse-surface": "#0c0f10",
+            "surface-container-low": "#f1f4f6",
+            "tertiary-container": "#d3ceef",
+            "tertiary": "#5f5c78",
+            "outline-variant": "#abb3b7",
+            "secondary-container": "#e2e2e9",
+            "surface-variant": "#dbe4e7",
+            "outline": "#737c7f",
+            "surface-container-high": "#e2e9ec",
+            "primary": "#005ac2",
+            "on-tertiary-container": "#47445f"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.5rem",
+            "lg": "0.5rem",
+            "xl": "1rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    .whisper-shadow {
+      box-shadow: 0 12px 40px -12px rgba(43, 52, 55, 0.08);
+    }
+    .ghost-border {
+      border: 1px solid rgba(171, 179, 183, 0.15);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- Main Background Dashboard (Obscured by Modal) -->
+<div class="fixed inset-0 z-0 overflow-hidden select-none grayscale opacity-30 pointer-events-none">
+<!-- TopNavBar Simulation -->
+<header class="w-full top-0 sticky bg-white dark:bg-slate-900 flex justify-between items-center h-16 px-6 max-w-full mx-auto">
+<div class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">AgentFlow</div>
+<nav class="hidden md:flex gap-8">
+<span class="text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400 pb-1 text-sm font-medium tracking-wide">Dashboard</span>
+<span class="text-slate-500 dark:text-slate-400 text-sm font-medium tracking-wide">Workflows</span>
+<span class="text-slate-500 dark:text-slate-400 text-sm font-medium tracking-wide">Logs</span>
+</nav>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-500">notifications</span>
+<div class="w-8 h-8 rounded-full bg-slate-200"></div>
+</div>
+</header>
+<main class="p-8 grid grid-cols-12 gap-6">
+<div class="col-span-12 h-32 bg-surface-container-low rounded-xl"></div>
+<div class="col-span-4 h-64 bg-surface-container-low rounded-xl"></div>
+<div class="col-span-8 h-64 bg-surface-container-low rounded-xl"></div>
+<div class="col-span-12 h-96 bg-surface-container-low rounded-xl"></div>
+</main>
+</div>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-on-surface/5 backdrop-blur-sm">
+<!-- Create Agent Modal -->
+<div class="relative w-full max-w-2xl overflow-hidden glass-effect rounded-xl whisper-shadow ghost-border flex flex-col">
+<!-- Modal Header -->
+<div class="px-8 pt-8 pb-6 flex justify-between items-start">
+<div>
+<h1 class="text-2xl font-semibold tracking-tight text-on-surface">Create New Agent</h1>
+<p class="text-on-surface-variant text-sm mt-1">Configure your autonomous AI agent to handle cross-platform operations.</p>
+</div>
+<button class="p-2 rounded-lg hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">close</span>
+</button>
+</div>
+<!-- Modal Body -->
+<div class="px-8 pb-10 space-y-8">
+<!-- Define Agent Goal -->
+<section class="space-y-3">
+<div class="flex justify-between items-center">
+<label class="text-xs font-medium uppercase tracking-widest text-on-surface-variant">Define Agent Goal</label>
+<span class="text-[10px] text-on-surface-variant/60">Required</span>
+</div>
+<div class="relative group">
+<input class="w-full px-4 py-3.5 bg-surface-container-low border-0 rounded-lg text-on-surface placeholder:text-on-surface-variant/40 focus:ring-2 focus:ring-primary/20 transition-all text-sm ghost-border" placeholder="e.g., Monitor brand mentions and generate weekly sentiment reports" type="text"/>
+</div>
+</section>
+<!-- Platform Selection -->
+<section class="space-y-4">
+<label class="text-xs font-medium uppercase tracking-widest text-on-surface-variant">Platform Selection</label>
+<div class="grid grid-cols-4 gap-4">
+<!-- Instagram -->
+<button class="flex flex-col items-center gap-3 p-4 rounded-xl bg-surface-container-lowest ghost-border border-primary/20 hover:bg-surface-container-high transition-all group active:scale-95">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container-low group-hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="photo_camera">photo_camera</span>
+</div>
+<span class="text-xs font-medium text-on-surface">Instagram</span>
+</button>
+<!-- LinkedIn -->
+<button class="flex flex-col items-center gap-3 p-4 rounded-xl bg-primary-container/30 border-2 border-primary whisper-shadow transition-all group active:scale-95">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary text-on-primary">
+<span class="material-symbols-outlined" data-icon="work" style="font-variation-settings: 'FILL' 1;">work</span>
+</div>
+<span class="text-xs font-medium text-primary">LinkedIn</span>
+</button>
+<!-- X (Twitter) -->
+<button class="flex flex-col items-center gap-3 p-4 rounded-xl bg-surface-container-lowest ghost-border hover:bg-surface-container-high transition-all group active:scale-95">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container-low group-hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="terminal">terminal</span>
+</div>
+<span class="text-xs font-medium text-on-surface">X</span>
+</button>
+<!-- Facebook -->
+<button class="flex flex-col items-center gap-3 p-4 rounded-xl bg-surface-container-lowest ghost-border hover:bg-surface-container-high transition-all group active:scale-95">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container-low group-hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="groups">groups</span>
+</div>
+<span class="text-xs font-medium text-on-surface">Facebook</span>
+</button>
+</div>
+</section>
+<!-- Operation Frequency -->
+<div class="grid grid-cols-2 gap-6">
+<section class="space-y-3">
+<label class="text-xs font-medium uppercase tracking-widest text-on-surface-variant">Operation Frequency</label>
+<div class="relative">
+<select class="w-full appearance-none px-4 py-3.5 bg-surface-container-low border-0 rounded-lg text-on-surface focus:ring-2 focus:ring-primary/20 transition-all text-sm ghost-border cursor-pointer">
+<option>Daily</option>
+<option selected="">Hourly</option>
+<option>Custom</option>
+</select>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant text-lg">expand_more</span>
+</div>
+</div>
+</section>
+<!-- Advanced Toggle (Subtle) -->
+<section class="space-y-3 flex flex-col justify-end">
+<div class="flex items-center gap-3 p-3.5 bg-surface-container-low rounded-lg ghost-border opacity-60">
+<span class="material-symbols-outlined text-on-surface-variant text-lg" data-icon="settings">settings</span>
+<span class="text-xs font-medium text-on-surface-variant">Advanced Logic Control</span>
+<div class="ml-auto w-8 h-4 bg-surface-container-highest rounded-full relative">
+<div class="absolute left-1 top-1 w-2 h-2 bg-white rounded-full"></div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="px-8 py-6 bg-surface-container-low flex items-center justify-between mt-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">info</span>
+<span class="text-[11px] text-on-surface-variant">Estimated cost: <span class="font-semibold">0.4 Credits / Run</span></span>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-6 py-2.5 text-sm font-medium text-on-surface hover:text-primary transition-colors">
+            Save Draft
+          </button>
+<button class="px-8 py-2.5 text-sm font-semibold text-on-primary bg-gradient-to-b from-primary to-primary-dim rounded-lg shadow-sm hover:opacity-90 active:scale-[0.98] transition-all">
+            Deploy Agent
+          </button>
+</div>
+</div>
+</div>
+<!-- Background Illustration (Abstract) -->
+<div class="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
+<div class="absolute top-1/4 -right-20 w-96 h-96 bg-primary/5 rounded-full blur-[100px]"></div>
+<div class="absolute -bottom-20 -left-20 w-96 h-96 bg-tertiary-container/10 rounded-full blur-[100px]"></div>
+</div>
+</div>
+<!-- Small Toast Notification (Contextual) -->
+<div class="fixed bottom-6 right-6 z-[60] flex items-center gap-4 bg-on-surface px-6 py-4 rounded-xl shadow-2xl animate-in slide-in-from-bottom-4 duration-500">
+<div class="flex items-center justify-center w-6 h-6 bg-primary rounded-full">
+<span class="material-symbols-outlined text-white text-[16px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-medium leading-tight">Integration Healthy</span>
+<span class="text-white/60 text-[10px] uppercase tracking-wider">LinkedIn API Connected</span>
+</div>
+</div>
+</body></html>

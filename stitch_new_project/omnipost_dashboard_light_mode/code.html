@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OmniPost Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#eaeff1",
+                    "outline": "#737c7f",
+                    "tertiary-dim": "#53506b",
+                    "background": "#f8f9fa",
+                    "secondary-fixed": "#e2e2e9",
+                    "surface-dim": "#d1dce0",
+                    "primary-fixed-dim": "#c3d4ff",
+                    "primary-fixed": "#d8e2ff",
+                    "on-tertiary-fixed": "#34314b",
+                    "on-tertiary-fixed-variant": "#504e69",
+                    "primary-dim": "#004fab",
+                    "secondary-dim": "#515359",
+                    "on-tertiary": "#fcf7ff",
+                    "on-secondary": "#f9f8ff",
+                    "tertiary-fixed-dim": "#c5c0e0",
+                    "error-container": "#fe8983",
+                    "on-primary-fixed-variant": "#0057bd",
+                    "tertiary": "#5f5c78",
+                    "error": "#9f403d",
+                    "on-primary": "#f7f7ff",
+                    "primary-container": "#d8e2ff",
+                    "on-error": "#fff7f6",
+                    "inverse-primary": "#4d8eff",
+                    "surface-variant": "#dbe4e7",
+                    "on-primary-container": "#004eaa",
+                    "on-secondary-fixed": "#3e3f45",
+                    "tertiary-fixed": "#d3ceef",
+                    "inverse-on-surface": "#9b9d9e",
+                    "outline-variant": "#abb3b7",
+                    "tertiary-container": "#d3ceef",
+                    "secondary-fixed-dim": "#d4d4db",
+                    "on-secondary-container": "#505157",
+                    "primary": "#005ac2",
+                    "surface-container-high": "#e2e9ec",
+                    "on-surface-variant": "#586064",
+                    "inverse-surface": "#0c0f10",
+                    "on-surface": "#2b3437",
+                    "on-secondary-fixed-variant": "#5a5b61",
+                    "surface-tint": "#005ac2",
+                    "on-primary-fixed": "#003c86",
+                    "secondary-container": "#e2e2e9",
+                    "surface-container-highest": "#dbe4e7",
+                    "surface-bright": "#f8f9fa",
+                    "error-dim": "#4e0309",
+                    "secondary": "#5e5f65",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error-container": "#752121",
+                    "on-tertiary-container": "#47445f",
+                    "surface-container-low": "#f1f4f6",
+                    "on-background": "#2b3437",
+                    "surface": "#f8f9fa"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.5rem",
+                    "lg": "0.5rem",
+                    "xl": "1rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter", "sans-serif"],
+                    "body": ["Inter", "sans-serif"],
+                    "label": ["Inter", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .whisper-shadow {
+            box-shadow: 0 12px 40px -12px rgba(43, 52, 55, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Sidebar Navigation -->
+<aside class="h-screen w-64 fixed left-0 top-0 flex flex-col h-full py-6 border-r border-slate-200/50 bg-slate-50 overflow-y-auto">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-lg" data-icon="hub">hub</span>
+</div>
+<div>
+<h1 class="text-xl font-black text-slate-900 tracking-tight">OmniPost</h1>
+<p class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant opacity-60">Enterprise Plan</p>
+</div>
+</div>
+<div class="px-4 mb-6">
+<button class="w-full py-2.5 px-4 bg-primary text-on-primary rounded-lg font-semibold text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-all duration-200 shadow-sm active:scale-95">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                New Post
+            </button>
+</div>
+<nav class="flex-1 px-2 space-y-1">
+<a class="relative text-blue-600 font-semibold text-sm px-4 py-2.5 flex items-center gap-3 before:absolute before:left-0 before:w-1 before:h-6 before:bg-blue-600 before:rounded-r-full group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="text-slate-600 px-4 py-2.5 flex items-center gap-3 text-sm font-medium hover:text-slate-900 hover:bg-slate-100/50 rounded-lg transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="calendar_month">calendar_month</span>
+                Schedule
+            </a>
+<a class="text-slate-600 px-4 py-2.5 flex items-center gap-3 text-sm font-medium hover:text-slate-900 hover:bg-slate-100/50 rounded-lg transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="bar_chart">bar_chart</span>
+                Analytics
+            </a>
+<a class="text-slate-600 px-4 py-2.5 flex items-center gap-3 text-sm font-medium hover:text-slate-900 hover:bg-slate-100/50 rounded-lg transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="psychology">psychology</span>
+                AI Tools
+            </a>
+<a class="text-slate-600 px-4 py-2.5 flex items-center gap-3 text-sm font-medium hover:text-slate-900 hover:bg-slate-100/50 rounded-lg transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="settings">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="px-2 mt-auto pt-6 border-t border-slate-200/50">
+<a class="text-slate-600 px-4 py-2.5 flex items-center gap-3 text-sm font-medium hover:text-slate-900 hover:bg-slate-100/50 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+                Help
+            </a>
+<a class="text-slate-600 px-4 py-2.5 flex items-center gap-3 text-sm font-medium hover:text-slate-900 hover:bg-slate-100/50 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen bg-background pb-12">
+<!-- Top Navigation -->
+<header class="w-full top-0 sticky z-30 bg-white/80 backdrop-blur-md border-b border-slate-100 flex justify-between items-center h-14 px-8">
+<div class="flex items-center flex-1 max-w-md">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-lg py-1.5 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary/20 transition-all placeholder:text-on-surface-variant/50" placeholder="Search analytics or posts..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-slate-100 rounded-lg transition-colors relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2.5 w-2 h-2 bg-error rounded-full border-2 border-white"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-slate-100 rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+</button>
+<div class="h-8 w-px bg-slate-200 mx-2"></div>
+<div class="flex items-center gap-3 cursor-pointer group">
+<div class="text-right">
+<p class="text-xs font-bold text-on-surface">Alex Rivers</p>
+<p class="text-[10px] text-on-surface-variant">Admin</p>
+</div>
+<img alt="User Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-transparent group-hover:ring-primary/20 transition-all" data-alt="professional portrait of a creative director in a minimalist studio setting with soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxGP50VJFPMEb3gHsvodbcd6OB4tcRuQM68mup6nRrdvm_gHFXdvN63dNW2hJA0foWezFjRhGgDXci7a2r4oQBqfn4jD0lUFgkESRhj5jBkxsa4B0WtJjeGW8YfwtVHAn-H_aTiS0AD0H7PMiKOv-Olc2hktRamdeFjLqlaGNhlaaJKFonnDbvvtw4gHDrQDTA7HkNcMQYKKWJ-P5j7IZWPTnW1gOE4iE7FSTs_f7EMq3dgVJCFjw4MP6ijM9Mg6l7q_maHaxpwBaz"/>
+</div>
+</div>
+</header>
+<div class="p-8 max-w-7xl mx-auto space-y-8">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="text-3xl font-bold tracking-tight text-on-surface mb-1">Performance Overview</h2>
+<p class="text-on-surface-variant">Real-time engagement and growth tracking across all channels.</p>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low p-1 rounded-lg">
+<button class="px-4 py-1.5 text-xs font-semibold bg-white rounded-md shadow-sm text-primary">Last 30 Days</button>
+<button class="px-4 py-1.5 text-xs font-medium text-on-surface-variant hover:text-on-surface transition-colors">Quarterly</button>
+</div>
+</div>
+<!-- 1. Overview Cards (Bento Style) -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-lowest p-6 rounded-xl whisper-shadow border border-slate-50 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-6xl" data-icon="post_add">post_add</span>
+</div>
+<p class="text-label-md text-on-surface-variant font-medium tracking-wider uppercase text-[10px] mb-4">Total Posts</p>
+<div class="flex items-baseline gap-3">
+<h3 class="text-4xl font-bold text-on-surface">1,248</h3>
+<span class="flex items-center text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-sm mr-1">trending_up</span>
+                            +14%
+                        </span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl whisper-shadow border border-slate-50 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-6xl" data-icon="ads_click">ads_click</span>
+</div>
+<p class="text-label-md text-on-surface-variant font-medium tracking-wider uppercase text-[10px] mb-4">Engagement Rate</p>
+<div class="flex items-baseline gap-3">
+<h3 class="text-4xl font-bold text-on-surface">4.8%</h3>
+<span class="flex items-center text-xs font-bold text-primary bg-primary-container px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-sm mr-1">remove</span>
+                            Steady
+                        </span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl whisper-shadow border border-slate-50 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-6xl" data-icon="group_add">group_add</span>
+</div>
+<p class="text-label-md text-on-surface-variant font-medium tracking-wider uppercase text-[10px] mb-4">Follower Growth</p>
+<div class="flex items-baseline gap-3">
+<h3 class="text-4xl font-bold text-on-surface">+12%</h3>
+<span class="flex items-center text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-sm mr-1">expand_less</span>
+                            Above Avg
+                        </span>
+</div>
+</div>
+</section>
+<!-- Main Layout Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Content: Scheduled Posts & Accounts -->
+<div class="lg:col-span-8 space-y-8">
+<!-- 2. Scheduled Posts -->
+<section class="bg-surface-container-lowest rounded-xl whisper-shadow border border-slate-50 overflow-hidden">
+<div class="p-6 border-b border-slate-50 flex items-center justify-between">
+<h3 class="font-bold text-lg">Scheduled Posts</h3>
+<button class="text-primary text-sm font-semibold hover:underline">View Calendar</button>
+</div>
+<div class="divide-y divide-slate-50">
+<!-- Post 1 -->
+<div class="p-5 hover:bg-slate-50/50 transition-colors flex items-center gap-6">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Instagram Post Preview" class="w-full h-full object-cover" data-alt="abstract 3d render of colorful flowing shapes with vibrant purple and orange highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTV64XAsn-6eMPouRABzG45QSnVzo7i67PR67yWU0YpQJFb98s0s3mefPYNCIyxJpiwR3yglhKFTXBbe8zxzSdAzfI9T01uTQoCHSubo-JxJaD8MLSCsyLP0UuFOect90sNg3BfMkCnqmkZI8pPkTa6LblHvwkwB_7-56bPrJDKjir8T85p6JtutXMcyMmTls7abE0onqlE9dEJ3qFlr85ni-HrY8rakHLoM6N_UzK_WT7lkXrphdp1mynlJKxTz-J12Oza3ohdY-Y"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-semibold text-sm truncate mb-1">Modern Minimalist Workspace Setup</h4>
+<p class="text-on-surface-variant text-xs truncate">Caption: Our new studio space is finally coming together...</p>
+</div>
+<div class="flex flex-col items-end gap-2">
+<div class="flex items-center gap-1.5 px-2 py-1 bg-surface-container rounded-md">
+<span class="material-symbols-outlined text-sm text-pink-600" data-icon="photo_camera">photo_camera</span>
+<span class="text-[10px] font-bold text-on-surface-variant">INSTAGRAM</span>
+</div>
+<p class="text-xs font-medium text-on-surface-variant">Today, 2:00 PM</p>
+</div>
+</div>
+<!-- Post 2 -->
+<div class="p-5 hover:bg-slate-50/50 transition-colors flex items-center gap-6">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="LinkedIn Post Preview" class="w-full h-full object-cover" data-alt="high resolution business data chart on a clean tablet screen with soft office background lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCf-_YGuxkmt4y4HJH-bLocCXaqvX8Qqv5CQv4ux2NL9XtyNaeDS9SSUfNTPuK1MkSI0tWdklz91vOBMwJJcQdozT789B48fEx5qAf62qCVk1eFvsnjyrU1taw6QomOPJpzC5fQjt-7-CEyIEOoBYtc0tKn_3aG8eBPgIs3GWgSefrU_jnNpELuXjSSLVPMFT4Abu04aMNrAMsygc-2QnPpywbm6IG5GFHJuEASqRmHAl5vh9Mn65OOy8OLnQBA7Ga1iR7xksH2Rd5T"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-semibold text-sm truncate mb-1">Q3 Marketing Insights &amp; Strategy</h4>
+<p class="text-on-surface-variant text-xs truncate">Caption: Deep dive into the data that drove our latest...</p>
+</div>
+<div class="flex flex-col items-end gap-2">
+<div class="flex items-center gap-1.5 px-2 py-1 bg-surface-container rounded-md">
+<span class="material-symbols-outlined text-sm text-blue-700" data-icon="work">work</span>
+<span class="text-[10px] font-bold text-on-surface-variant">LINKEDIN</span>
+</div>
+<p class="text-xs font-medium text-on-surface-variant">Tomorrow, 9:30 AM</p>
+</div>
+</div>
+<!-- Post 3 -->
+<div class="p-5 hover:bg-slate-50/50 transition-colors flex items-center gap-6">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 flex items-center justify-center bg-slate-100">
+<span class="material-symbols-outlined text-slate-400" data-icon="text_fields">text_fields</span>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-semibold text-sm truncate mb-1">Quick Update: New Features Live!</h4>
+<p class="text-on-surface-variant text-xs truncate">Caption: We've just rolled out 5 new automation tools...</p>
+</div>
+<div class="flex flex-col items-end gap-2">
+<div class="flex items-center gap-1.5 px-2 py-1 bg-surface-container rounded-md">
+<span class="material-symbols-outlined text-sm text-sky-500" data-icon="flutter_dash">flutter_dash</span>
+<span class="text-[10px] font-bold text-on-surface-variant">X (TWITTER)</span>
+</div>
+<p class="text-xs font-medium text-on-surface-variant">Oct 12, 4:00 PM</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Connected Accounts -->
+<section class="bg-surface-container-lowest p-6 rounded-xl whisper-shadow border border-slate-50">
+<h3 class="font-bold text-lg mb-6">Connected Accounts</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="flex items-center gap-3 p-3 bg-surface rounded-lg">
+<div class="w-10 h-10 rounded-lg bg-pink-50 flex items-center justify-center text-pink-600">
+<span class="material-symbols-outlined" data-icon="camera">camera</span>
+</div>
+<div>
+<p class="text-xs font-bold">Instagram</p>
+<div class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span class="text-[10px] text-on-surface-variant">Connected</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 bg-surface rounded-lg">
+<div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-700">
+<span class="material-symbols-outlined" data-icon="business_center">business_center</span>
+</div>
+<div>
+<p class="text-xs font-bold">LinkedIn</p>
+<div class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span class="text-[10px] text-on-surface-variant">Connected</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 bg-surface rounded-lg">
+<div class="w-10 h-10 rounded-lg bg-sky-50 flex items-center justify-center text-sky-500">
+<span class="material-symbols-outlined" data-icon="tag">tag</span>
+</div>
+<div>
+<p class="text-xs font-bold">X / Twitter</p>
+<div class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span class="text-[10px] text-on-surface-variant">Connected</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 bg-surface rounded-lg">
+<div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600">
+<span class="material-symbols-outlined" data-icon="facebook">social_leaderboard</span>
+</div>
+<div>
+<p class="text-xs font-bold">Facebook</p>
+<div class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span class="text-[10px] text-on-surface-variant">Connected</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Content: AI Suggestions Panel -->
+<aside class="lg:col-span-4 space-y-6">
+<section class="glass-panel p-6 rounded-xl whisper-shadow border border-white sticky top-20">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div>
+<h3 class="font-bold text-lg">AI Suggestions</h3>
+<p class="text-[10px] font-bold uppercase tracking-wider text-primary">Beta Feature</p>
+</div>
+</div>
+<div class="space-y-4">
+<!-- Suggestion 1 -->
+<div class="p-4 bg-white rounded-lg border border-slate-100 hover:border-primary/30 transition-all group">
+<p class="text-xs font-semibold text-on-surface mb-3 leading-relaxed">
+                                    "Share a behind-the-scenes look at your creative process to boost authenticity and engagement."
+                                </p>
+<button class="w-full py-2 bg-primary-container text-primary rounded-lg text-xs font-bold hover:bg-primary hover:text-white transition-all">
+                                    Generate Draft
+                                </button>
+</div>
+<!-- Suggestion 2 -->
+<div class="p-4 bg-white rounded-lg border border-slate-100 hover:border-primary/30 transition-all group">
+<p class="text-xs font-semibold text-on-surface mb-3 leading-relaxed">
+                                    "Create a carousel post highlighting 5 common mistakes in your industry and how to avoid them."
+                                </p>
+<button class="w-full py-2 bg-primary-container text-primary rounded-lg text-xs font-bold hover:bg-primary hover:text-white transition-all">
+                                    Generate Draft
+                                </button>
+</div>
+<!-- Suggestion 3 -->
+<div class="p-4 bg-white rounded-lg border border-slate-100 hover:border-primary/30 transition-all group">
+<p class="text-xs font-semibold text-on-surface mb-3 leading-relaxed">
+                                    "Run a 'Poll' on X regarding upcoming design trends to spark community discussion."
+                                </p>
+<button class="w-full py-2 bg-primary-container text-primary rounded-lg text-xs font-bold hover:bg-primary hover:text-white transition-all">
+                                    Generate Draft
+                                </button>
+</div>
+</div>
+<div class="mt-8 p-4 bg-slate-900 rounded-lg text-white">
+<div class="flex items-center justify-between mb-4">
+<p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Tokens Remaining</p>
+<span class="text-xs font-bold">1,240 / 5,000</span>
+</div>
+<div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+<div class="w-1/4 h-full bg-primary rounded-full"></div>
+</div>
+<button class="w-full mt-4 text-[10px] font-bold text-center text-slate-400 hover:text-white transition-colors">Upgrade for more tokens</button>
+</div>
+</section>
+</aside>
+</div>
+</div>
+</main>
+</body></html>

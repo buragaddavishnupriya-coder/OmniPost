@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OmniPost | The Digital Curator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#006a71",
+                    "on-surface": "#e5e2e3",
+                    "on-primary-fixed": "#002022",
+                    "tertiary-fixed-dim": "#e8c423",
+                    "surface-container-highest": "#353436",
+                    "surface-tint": "#00dbe7",
+                    "surface-dim": "#131314",
+                    "primary-fixed": "#74f5ff",
+                    "primary-container": "#00f2ff",
+                    "on-error-container": "#ffdad6",
+                    "secondary-container": "#7000ff",
+                    "tertiary-fixed": "#ffe173",
+                    "error": "#ffb4ab",
+                    "surface-bright": "#3a393a",
+                    "inverse-primary": "#00696f",
+                    "surface-variant": "#353436",
+                    "tertiary": "#fff6e4",
+                    "on-surface-variant": "#b9cacb",
+                    "on-secondary-fixed-variant": "#5700c9",
+                    "surface-container-lowest": "#0e0e0f",
+                    "on-primary-fixed-variant": "#004f54",
+                    "secondary": "#d1bcff",
+                    "on-error": "#690005",
+                    "primary": "#e1fdff",
+                    "outline": "#849495",
+                    "on-secondary": "#3c0090",
+                    "on-secondary-container": "#ddcdff",
+                    "on-secondary-fixed": "#23005b",
+                    "tertiary-container": "#fed83a",
+                    "primary-fixed-dim": "#00dbe7",
+                    "on-tertiary-fixed-variant": "#554500",
+                    "error-container": "#93000a",
+                    "on-primary": "#00363a",
+                    "surface-container-high": "#2a2a2b",
+                    "inverse-surface": "#e5e2e3",
+                    "on-tertiary-fixed": "#221b00",
+                    "secondary-fixed": "#e9ddff",
+                    "secondary-fixed-dim": "#d1bcff",
+                    "outline-variant": "#3a494b",
+                    "on-tertiary": "#3b2f00",
+                    "background": "#131314",
+                    "inverse-on-surface": "#313031",
+                    "surface-container": "#201f20",
+                    "surface": "#131314",
+                    "on-background": "#e5e2e3",
+                    "on-tertiary-container": "#725e00",
+                    "surface-container-low": "#1c1b1c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #131314; color: #e5e2e3; }
+        .font-headline { font-family: 'Space Grotesk', sans-serif; }
+        .glass-panel {
+            background: rgba(53, 52, 54, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(132, 148, 149, 0.1);
+        }
+        .neon-glow-primary {
+            box-shadow: 0 0 40px rgba(225, 253, 255, 0.04);
+        }
+        .cyber-gradient {
+            background: linear-gradient(135deg, #00f2ff 0%, #7000ff 100%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background overflow-hidden">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-[#1c1b1c] dark:bg-[#1c1b1c] flex flex-col p-6 shadow-[40px_0_40px_rgba(225,253,255,0.04)] z-50">
+<div class="mb-10">
+<span class="text-2xl font-bold bg-gradient-to-br from-[#00f2ff] to-[#7000ff] bg-clip-text text-transparent font-headline tracking-tight">OmniPost</span>
+<p class="text-[10px] text-gray-500 uppercase tracking-widest mt-1">The Digital Curator</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-[#00f2ff] bg-[#353436] rounded-lg font-bold transition-all duration-300 font-headline" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:text-white hover:bg-[#353436] transition-all duration-300 rounded-lg font-headline" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span>Schedule</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:text-white hover:bg-[#353436] transition-all duration-300 rounded-lg font-headline" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:text-white hover:bg-[#353436] transition-all duration-300 rounded-lg font-headline" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span>AI Tools</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:text-white hover:bg-[#353436] transition-all duration-300 rounded-lg font-headline" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto">
+<button class="w-full cyber-gradient text-on-primary-fixed font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+<span>New Post</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 left-64 h-20 bg-[#131314]/40 backdrop-blur-xl flex items-center justify-between px-8 z-40">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-[#00f2ff]" data-icon="search">search</span>
+<input class="w-full bg-surface-container-highest/50 border-none rounded-xl py-2.5 pl-12 pr-4 text-sm focus:ring-1 focus:ring-[#00f2ff]/40 transition-all" placeholder="Search insights, posts, or tools..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="relative text-gray-400 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-[#7000ff] rounded-full"></span>
+</button>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="text-sm font-medium">Alex Rivera</p>
+<p class="text-[10px] text-gray-500 uppercase tracking-tighter">Pro Plan</p>
+</div>
+<img alt="User Profile" class="w-10 h-10 rounded-full object-cover outline outline-2 outline-outline-variant/20" data-alt="Close-up portrait of a professional male with a modern haircut against a soft blurred studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlfGjUPFTs-GYH6pbI_uIpWDQfuw5Z39q4etLPRlZsYyS2Zkso9WeTl3DAnlv3BjlSFtO7Q473dkO5wRJWElSWb8x6BjxrQnf2wLQMBBeBMULhqJTslzzFJRBSNDqGBQm6dVucXSMXuHxHp3Bn6WXD_HYZzDihTX1SvQsuHrLwhLpZnN1Ryy5q_j9J56USyyfaALri80wsdvuGpb4XjrmZikx44MHzXApNRk-LUrkgkZZQdFNvVYznlB6mWhxoMXS_4h1gH-2kgZRk"/>
+</div>
+</div>
+</header>
+<div class="pt-28 px-10 pb-10">
+<!-- Hero Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+<div class="glass-panel p-8 rounded-2xl relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-[#00f2ff]/5 rounded-full blur-3xl group-hover:bg-[#00f2ff]/10 transition-colors"></div>
+<p class="text-label-sm uppercase tracking-[0.2em] text-gray-500 mb-2 text-xs">Total Posts</p>
+<h3 class="text-5xl font-headline font-bold text-primary-container">1,248</h3>
+<div class="mt-4 flex items-center gap-2 text-primary-fixed-dim text-sm">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+<span>+14.2% from last month</span>
+</div>
+</div>
+<div class="glass-panel p-8 rounded-2xl relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-[#7000ff]/5 rounded-full blur-3xl group-hover:bg-[#7000ff]/10 transition-colors"></div>
+<p class="text-label-sm uppercase tracking-[0.2em] text-gray-500 mb-2 text-xs">Engagement Rate</p>
+<h3 class="text-5xl font-headline font-bold text-on-secondary-container">4.8%</h3>
+<div class="mt-4 flex items-center gap-2 text-secondary text-sm">
+<span class="material-symbols-outlined text-sm" data-icon="analytics">analytics</span>
+<span>Optimized by OmniAI</span>
+</div>
+</div>
+<div class="glass-panel p-8 rounded-2xl relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-[#e8c423]/5 rounded-full blur-3xl group-hover:bg-[#e8c423]/10 transition-colors"></div>
+<p class="text-label-sm uppercase tracking-[0.2em] text-gray-500 mb-2 text-xs">Followers Growth</p>
+<h3 class="text-5xl font-headline font-bold text-tertiary-fixed-dim">+12%</h3>
+<div class="mt-4 flex items-center gap-2 text-tertiary text-sm">
+<span class="material-symbols-outlined text-sm" data-icon="groups">groups</span>
+<span>2,450 new this month</span>
+</div>
+</div>
+</div>
+<!-- Main Dashboard Grid (Asymmetric Bento) -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Left Column (Scheduled & Platforms) -->
+<div class="col-span-12 lg:col-span-7 space-y-8">
+<!-- Connected Platforms -->
+<section class="bg-surface-container-low rounded-3xl p-8">
+<h2 class="text-xl font-headline font-bold mb-8">Connected Platforms</h2>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
+<div class="glass-panel p-6 rounded-2xl flex flex-col items-center gap-4 hover:bg-surface-container-highest transition-colors cursor-pointer">
+<div class="w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-tr from-pink-500 via-red-500 to-yellow-500 shadow-lg">
+<span class="material-symbols-outlined text-white text-3xl" data-icon="photo_camera">photo_camera</span>
+</div>
+<div class="text-center">
+<p class="text-sm font-semibold">Instagram</p>
+<span class="text-[10px] text-[#00f2ff] flex items-center justify-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-[#00f2ff]"></span> Connected
+                                    </span>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-2xl flex flex-col items-center gap-4 hover:bg-surface-container-highest transition-colors cursor-pointer">
+<div class="w-12 h-12 flex items-center justify-center rounded-xl bg-sky-500 shadow-lg">
+<span class="material-symbols-outlined text-white text-3xl" data-icon="close">close</span>
+</div>
+<div class="text-center">
+<p class="text-sm font-semibold">Twitter (X)</p>
+<span class="text-[10px] text-[#00f2ff] flex items-center justify-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-[#00f2ff]"></span> Connected
+                                    </span>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-2xl flex flex-col items-center gap-4 hover:bg-surface-container-highest transition-colors cursor-pointer">
+<div class="w-12 h-12 flex items-center justify-center rounded-xl bg-blue-600 shadow-lg">
+<span class="material-symbols-outlined text-white text-3xl" data-icon="work">work</span>
+</div>
+<div class="text-center">
+<p class="text-sm font-semibold">LinkedIn</p>
+<span class="text-[10px] text-[#00f2ff] flex items-center justify-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-[#00f2ff]"></span> Connected
+                                    </span>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-2xl flex flex-col items-center gap-4 hover:bg-surface-container-highest transition-colors cursor-pointer opacity-50">
+<div class="w-12 h-12 flex items-center justify-center rounded-xl bg-gray-700 shadow-lg">
+<span class="material-symbols-outlined text-white text-3xl" data-icon="facebook">social_leaderboard</span>
+</div>
+<div class="text-center">
+<p class="text-sm font-semibold">Facebook</p>
+<span class="text-[10px] text-gray-500 uppercase">Disconnected</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Scheduled Posts Preview -->
+<section class="bg-surface-container-low rounded-3xl p-8">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-xl font-headline font-bold">Upcoming Pipeline</h2>
+<button class="text-[#00f2ff] text-sm hover:underline">View Calendar</button>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-6 p-4 rounded-2xl hover:bg-surface-container-highest/50 transition-all border border-transparent hover:border-outline-variant/10">
+<img alt="Post thumbnail" class="w-20 h-20 rounded-xl object-cover" data-alt="High-tech workspace with mechanical keyboard and neon glowing computer hardware components" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVOiZ8dhjEMJdhWobunoq8Gsbcejq0hVnswDM4BVj0VdoNZDuTvGL-go4jWBrclq4s294qT1Wo4UrNmVat2_vw395aiBjkQ2H18D6H4CTzOMK_fcjJ3pevYMlmYmgl7BL_iGuSenLAYoPeGCOO5mBIufmtKcIbIzVavkC3kdm3oSNxacYKoh02IIuclM_Qs6tAwJJDMZTS_dOGKtWQ-TIm1BfGJuZm9-AJCDn03qpco_9uuSpGop9YKG5qC4V04qatlaq0MFD_J5p8"/>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-pink-500 text-lg" data-icon="photo_camera">photo_camera</span>
+<span class="text-[10px] uppercase tracking-widest text-gray-500">Instagram Reel</span>
+</div>
+<h4 class="font-medium text-sm">Mastering the AI Workflow: Part 1</h4>
+<p class="text-xs text-gray-500 mt-1">Scheduled for Today, 14:00 PM</p>
+</div>
+<button class="p-2 text-gray-400 hover:text-white">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<div class="flex items-center gap-6 p-4 rounded-2xl hover:bg-surface-container-highest/50 transition-all border border-transparent hover:border-outline-variant/10">
+<img alt="Post thumbnail" class="w-20 h-20 rounded-xl object-cover" data-alt="Abstract 3D render of vibrant purple and blue flowing silk textures in dark environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXu3QldCRVKAqctv9PLqy_VidDTQMP4Ayx2GUtszZSWDMevxhgUYg8lVvV0bK8Y0aU2AYrndVeCrKMKBVMxxF6t8cqh6HaQcXjUmFaive-hMHOKcxohuouQpbjXNgmU4dsqix5WaduIz0PIl-rDebFiFd2piwqA2mQTKkPRFuIGTcscWl7-wciTN4nYIbjkZaQ8jdBvTnfSGmc5S6OdZfGbV-ZJJxYDyo7OEFxvWbi8hC30RDOy0uBPuVqdILQEuhJ7eLVvIwWn4Kh"/>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-blue-600 text-lg" data-icon="work">work</span>
+<span class="text-[10px] uppercase tracking-widest text-gray-500">LinkedIn Article</span>
+</div>
+<h4 class="font-medium text-sm">Future of SaaS in 2025</h4>
+<p class="text-xs text-gray-500 mt-1">Scheduled for Tomorrow, 09:30 AM</p>
+</div>
+<button class="p-2 text-gray-400 hover:text-white">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column (AI Suggestions) -->
+<div class="col-span-12 lg:col-span-5">
+<section class="bg-surface-container-low rounded-3xl p-8 h-full border border-[#7000ff]/10 relative overflow-hidden">
+<!-- AI Inner Glow -->
+<div class="absolute inset-0 shadow-[inset_0_0_100px_rgba(112,0,255,0.05)] pointer-events-none"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-white" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div>
+<h2 class="text-xl font-headline font-bold">AI Curator</h2>
+<p class="text-[10px] text-[#7000ff] font-bold uppercase tracking-widest">Fresh Suggestions</p>
+</div>
+</div>
+<div class="space-y-6">
+<div class="glass-panel p-6 rounded-2xl group transition-all duration-300 hover:-translate-y-1">
+<div class="flex justify-between items-start mb-3">
+<span class="text-[10px] bg-secondary-container/20 text-[#d1bcff] px-2 py-1 rounded-full uppercase font-bold tracking-tighter">Content Idea</span>
+<span class="text-[10px] text-gray-500">92% Match</span>
+</div>
+<h4 class="font-headline text-lg mb-2 leading-tight">Behind-the-scenes video</h4>
+<p class="text-xs text-gray-400 mb-6 leading-relaxed">Showcase your desk setup using the new 'Cyber-Ether' theme. Audiences love authenticity in tech spaces.</p>
+<button class="w-full bg-gradient-to-r from-[#7000ff] to-[#00f2ff] py-3 rounded-xl text-on-secondary-fixed font-bold text-sm flex items-center justify-center gap-2 group-hover:shadow-[0_0_20px_rgba(112,0,255,0.4)] transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="bolt">bolt</span>
+                                        Generate
+                                    </button>
+</div>
+<div class="glass-panel p-6 rounded-2xl group transition-all duration-300 hover:-translate-y-1">
+<div class="flex justify-between items-start mb-3">
+<span class="text-[10px] bg-secondary-container/20 text-[#d1bcff] px-2 py-1 rounded-full uppercase font-bold tracking-tighter">Industry news</span>
+<span class="text-[10px] text-gray-500">88% Match</span>
+</div>
+<h4 class="font-headline text-lg mb-2 leading-tight">Industry news summary</h4>
+<p class="text-xs text-gray-400 mb-6 leading-relaxed">Break down the latest AI regulations in the EU for your LinkedIn professional network.</p>
+<button class="w-full bg-gradient-to-r from-[#7000ff] to-[#00f2ff] py-3 rounded-xl text-on-secondary-fixed font-bold text-sm flex items-center justify-center gap-2 group-hover:shadow-[0_0_20px_rgba(112,0,255,0.4)] transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="bolt">bolt</span>
+                                        Generate
+                                    </button>
+</div>
+<div class="glass-panel p-6 rounded-2xl group transition-all duration-300 hover:-translate-y-1">
+<div class="flex justify-between items-start mb-3">
+<span class="text-[10px] bg-secondary-container/20 text-[#d1bcff] px-2 py-1 rounded-full uppercase font-bold tracking-tighter">User engagement</span>
+<span class="text-[10px] text-gray-500">Trending</span>
+</div>
+<h4 class="font-headline text-lg mb-2 leading-tight">Poll: AI in Art</h4>
+<p class="text-xs text-gray-400 mb-6 leading-relaxed">Create a controversial but engaging poll about AI versus human artists for X (Twitter).</p>
+<button class="w-full bg-gradient-to-r from-[#7000ff] to-[#00f2ff] py-3 rounded-xl text-on-secondary-fixed font-bold text-sm flex items-center justify-center gap-2 group-hover:shadow-[0_0_20px_rgba(112,0,255,0.4)] transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="bolt">bolt</span>
+                                        Generate
+                                    </button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+</body></html>
