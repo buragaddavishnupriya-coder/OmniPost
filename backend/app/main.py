@@ -51,7 +51,10 @@ app = FastAPI(title="Omnipost API Gateway", version="1.0.0")
 # Enable CORS for React frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # In production, configure this correctly
+    allow_origins=[
+        "http://localhost:5173",
+        "https://buragaddavishnupriya-coder.github.io"
+    ], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
