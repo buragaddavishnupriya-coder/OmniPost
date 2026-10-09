@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 
-from .database import get_db, engine, Base
+from .database import get_db, engine, Base, init_db
 from .models import User, BrandVoiceProfile, ContentJob, Draft, PublishRecord, Agent
 from .schemas import (
     UserSignUp, UserLogin, Token, BrandVoiceProfileResponse, 
@@ -47,9 +47,11 @@ if not db_url or db_url.startswith("sqlite"):
     except Exception as e:
         logger.error(f"Failed to run auto-migration: {e}")
 
-Base.metadata.create_all(bind=engine)
-
 app = FastAPI(title="Omnipost API Gateway", version="1.0.0")
+
+@app.on_event("startup")
+def startup_event():
+    init_db()
 
 # Enable CORS for React frontend
 allowed_origins = [
