@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+*.db
+*.sqlite3
+omnipost.db
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Node / Frontend
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

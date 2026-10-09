@@ -23,42 +23,64 @@ from .agents import run_optimizer, run_critic, run_analytic
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("omnipost.api")
 
-# Initialize database tables and run lightweight migrations
+# Initialize database tables and run lightweight migrations for SQLite if local
+import os
 import sqlite3
-try:
-    conn = sqlite3.connect("omnipost.db")
-    cursor = conn.cursor()
-    cursor.execute("PRAGMA table_info(users)")
-    columns = [col[1] for col in cursor.fetchall()]
-    if "anthropic_api_key" not in columns:
-        logger.info("Migrating database: adding 'anthropic_api_key' column to users table")
-        cursor.execute("ALTER TABLE users ADD COLUMN anthropic_api_key TEXT")
-    if "gemini_api_key" not in columns:
-        logger.info("Migrating database: adding 'gemini_api_key' column to users table")
-        cursor.execute("ALTER TABLE users ADD COLUMN gemini_api_key TEXT")
-    if "preferred_model" not in columns:
-        logger.info("Migrating database: adding 'preferred_model' column to users table")
-        cursor.execute("ALTER TABLE users ADD COLUMN preferred_model TEXT DEFAULT 'gemini-2.5-flash'")
-    conn.commit()
-    conn.close()
-except Exception as e:
-    logger.error(f"Failed to run auto-migration: {e}")
+db_url = os.environ.get("DATABASE_URL", "")
+if not db_url or db_url.startswith("sqlite"):
+    try:
+        conn = sqlite3.connect("omnipost.db")
+        cursor = conn.cursor()
+        cursor.execute("PRAGMA table_info(users)")
+        columns = [col[1] for col in cursor.fetchall()]
+        if "anthropic_api_key" not in columns:
+            logger.info("Migrating database: adding 'anthropic_api_key' column to users table")
+            cursor.execute("ALTER TABLE users ADD COLUMN anthropic_api_key TEXT")
+        if "gemini_api_key" not in columns:
+            logger.info("Migrating database: adding 'gemini_api_key' column to users table")
+            cursor.execute("ALTER TABLE users ADD COLUMN gemini_api_key TEXT")
+        if "preferred_model" not in columns:
+            logger.info("Migrating database: adding 'preferred_model' column to users table")
+            cursor.execute("ALTER TABLE users ADD COLUMN preferred_model TEXT DEFAULT 'gemini-2.5-flash'")
+        conn.commit()
+        conn.close()
+    except Exception as e:
+        logger.error(f"Failed to run auto-migration: {e}")
 
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Omnipost API Gateway", version="1.0.0")
 
 # Enable CORS for React frontend
+allowed_origins = [
+    "http://localhost:5173",
+    "http://localhost:3000",
+    "https://buragaddavishnupriya-coder.github.io",
+]
+frontend_env = os.environ.get("FRONTEND_URL")
+if frontend_env:
+    for origin in frontend_env.split(","):
+        origin = origin.strip()
+        if origin and origin not in allowed_origins:
+            allowed_origins.append(origin)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "https://buragaddavishnupriya-coder.github.io"
-    ], 
+    allow_origins=allowed_origins,
+    allow_origin_regex=r"https:\/\/.*\.github\.io|https:\/\/.*\.onrender\.com|https:\/\/.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.get("/")
+@app.get("/health")
+def health_check():
+    return {
+        "status": "healthy",
+        "service": "Omnipost API Gateway",
+        "version": "1.0.0"
+    }
 
 # --- Authentication Endpoints ---
 

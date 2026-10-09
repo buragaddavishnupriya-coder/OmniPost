@@ -2,6 +2,8 @@ services:
   - type: web
     name: omnipost-backend
     env: python
+    plan: free
+    healthCheckPath: /health
     buildCommand: "cd backend && pip install -r requirements.txt"
     startCommand: "cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT"
     envVars:
@@ -9,6 +11,16 @@ services:
         fromDatabase:
           name: omnipost-db
           property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: FRONTEND_URL
+        value: "https://buragaddavishnupriya-coder.github.io"
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: PYTHON_VERSION
+        value: "3.11.9"
 
 databases:
   - name: omnipost-db
